@@ -10,5 +10,5 @@ function getCurrentTimeOfVideo({ seconds }) {
   localStorage.setItem(LOCALSTORAGE_KEY, seconds);
 }
 function updateCurrentTimeOfVideo() {
-  player.setCurrentTime(localStorage.getItem(LOCALSTORAGE_KEY));
+  player.setCurrentTime(localStorage.getItem(LOCALSTORAGE_KEY) || 0);
 }
