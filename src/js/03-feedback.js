@@ -5,7 +5,7 @@ const refs = {
   input: document.querySelector('input'),
   textarea: document.querySelector('textarea'),
 };
-const formData = {};
+let formData = {};
 
 putStorageData();
 
@@ -19,6 +19,7 @@ function putStorageData() {
   const parsedStorageData = JSON.parse(storageData);
 
   if (parsedStorageData) {
+    formData = parsedStorageData;
     refs.input.value = parsedStorageData.email || '';
     refs.textarea.value = parsedStorageData.message || '';
   }
@@ -29,6 +30,7 @@ function onFormSubmit(evt) {
   console.log(formData);
   evt.target.reset();
   localStorage.removeItem(STORAGE_KEY);
+  formData = {};
 }
 
 refs.form.addEventListener('input', throttle(onFormInputChange, 500));
